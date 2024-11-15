@@ -59,7 +59,7 @@ spec:
 {{- end }}
       containers:
         - name: provisioner
-          image: {{ .Values.image }}
+          image: {{ template "provisioner.image" . }}
           {{- if .Values.imagePullPolicy }}
           imagePullPolicy: {{ .Values.imagePullPolicy }}
           {{- end }}
@@ -77,7 +77,7 @@ spec:
               fieldRef:
                 fieldPath: metadata.namespace
           - name: JOB_CONTAINER_IMAGE
-            value: {{ .Values.image }}
+            value: {{ template "provisioner.image" . }}
           {{- if .Values.kubeConfigEnv }}
           - name: KUBECONFIG
             value: {{.Values.kubeConfigEnv}}

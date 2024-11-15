@@ -95,7 +95,18 @@ podAnnotations: {}
 podLabels: {}
 
 # Defines Provisioner's image name including container registry.
-image: registry.k8s.io/sig-storage/local-volume-provisioner:v2.6.0
+image:
+  # Defines the image repository.
+  repository: registry.k8s.io/sig-storage/local-volume-provisioner
+  # Override the image tag whose default is the chart appVersion.
+  tag:
+  # Defines Image download policy, see kubernetes documentation for available values.
+  # Setting this value here will take precedence over the value (if set) below.
+  # pullPolicy: Always
+
+# Defines an image as a full URL to the container image.
+# This setting exists to maintain backwards-compatibility with previous versions of the chart.
+# image: registry.k8s.io/sig-storage/local-volume-provisioner:vX.Y.Z
 
 # Defines Image download policy, see kubernetes documentation for available values.
 # imagePullPolicy: Always
